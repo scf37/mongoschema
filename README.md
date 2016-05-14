@@ -1,5 +1,5 @@
 # MongoSchema
-[![Build status](https://travis-ci.org/scf37/mongoschema.svg?branch=master)](https://travis-ci.org/scf37/dbinstaller)
+[![Build status](https://travis-ci.org/scf37/mongoschema.svg?branch=master)](https://travis-ci.org/scf37/mongoschema)
 
 A tool to analyze mongoDB collections and output schema
 

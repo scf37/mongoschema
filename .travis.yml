@@ -19,7 +19,6 @@ jdk:
 script:
   - git config --local user.email "scf370@gmail.com"
   - git config --local user.name "Travis"
-  - sbt ++$TRAVIS_SCALA_VERSION coverage test
   - export RELEASE_VERSION=$(sed 's/[^0-9]//g' version.sbt)
   - sbt dist
   - tar -C target/dist -cvjf dist.tar.bz2 .
@@ -29,12 +28,8 @@ script:
   - cat .secret-enc/github_key | openssl aes-256-cbc -a -d -k "$PASSWORD" > github_key
   - chmod 600 github_key
   - ssh-add github_key
-  - git remote add deploy git@github.com:scf37/dbinstaller.git
+  - git remote add deploy git@github.com:scf37/mongoschema.git
   - git branch -f master HEAD
   - git checkout master
   - git status
   - git push deploy master
-
-after_success: 
-  - sbt ++$TRAVIS_SCALA_VERSION coverageReport coveralls
-
