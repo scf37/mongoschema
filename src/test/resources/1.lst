@@ -1,0 +1,7 @@
+#comment
+
+scripts/a.script
+once scripts/b.script
+always scripts/c.script
+
+include sub/2.lst
