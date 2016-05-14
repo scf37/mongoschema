@@ -22,8 +22,8 @@ script:
   - export RELEASE_VERSION=$(sed 's/[^0-9]//g' version.sbt)
   - sbt dist
   - tar -C target/dist -cvjf dist.tar.bz2 .
-  - curl -T dist.tar.bz2 -uscf37:$(cat .secret-enc/bintray_key | openssl aes-256-cbc -a -d -k "$PASSWORD") https://api.bintray.com/content/scf37/generic/dbinstaller/$RELEASE_VERSION/dbinstaller-$RELEASE_VERSION.tar.bz2'?publish=1'
-  - curl -T dist.tar.bz2 -uscf37:$(cat .secret-enc/bintray_key | openssl aes-256-cbc -a -d -k "$PASSWORD") https://api.bintray.com/content/scf37/generic/dbinstaller/latest/dbinstaller-latest.tar.bz2'?publish=1&override=1'
+  - curl -T dist.tar.bz2 -uscf37:$(cat .secret-enc/bintray_key | openssl aes-256-cbc -a -d -k "$PASSWORD") https://api.bintray.com/content/scf37/generic/mongoschema/$RELEASE_VERSION/mongoschema-$RELEASE_VERSION.tar.bz2'?publish=1'
+  - curl -T dist.tar.bz2 -uscf37:$(cat .secret-enc/bintray_key | openssl aes-256-cbc -a -d -k "$PASSWORD") https://api.bintray.com/content/scf37/generic/mongoschema/latest/mongoschema-latest.tar.bz2'?publish=1&override=1'
   - eval "$(ssh-agent -s)" #start the ssh agent
   - cat .secret-enc/github_key | openssl aes-256-cbc -a -d -k "$PASSWORD" > github_key
   - chmod 600 github_key
